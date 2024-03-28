@@ -44,8 +44,12 @@ class Pegawai extends BaseController
             $saved = $this->model->save($data);
             
             // Pengecekan apakah data berhasil disimpan
-            if (!$saved) {
-                throw new \Exception('Gagal menyimpan data pegawai');
+            // if (!$saved) {
+            //     throw new \Exception('Gagal menyimpan data pegawai');
+            // }
+
+            if(!$saved) {
+                return $this->fail($this->model->errors());
             }
 
             $response = [
